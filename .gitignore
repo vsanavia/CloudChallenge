@@ -1,2 +1,10 @@
 #Ignore internal macos files
 .DS_Store
+.terraform.lock.hcl
+
+terraform/.terraform.lock.hcl
+terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/3.70.0/darwin_arm64/terraform-provider-aws_v3.70.0_x5
+terraform/variables.tf
+terraform/.terraform/providers/registry.terraform.io/hashicorp/google/3.90.1/darwin_arm64/terraform-provider-google_v3.90.1_x5
+terraform/.terraform/providers/registry.terraform.io/hashicorp/google-beta/3.90.1/darwin_arm64/terraform-provider-google-beta_v3.90.1_x5
+terraform/.terraform/modules/modules.json

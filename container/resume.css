@@ -17,7 +17,7 @@
 .msg a:hover { background: #266400; }
 
 /* //-- yui-grids style overrides -- */
-body { font-family: AmazonEmber; color: #444; }
+body { font-family: Inconsolata; color: #444; }
 #inner { padding: 10px 80px; margin: 80px auto; background: #f5f5f5; border: solid #666; border-width: 8px 0 2px 0; }
 .yui-gf { margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #ccc; }
 
