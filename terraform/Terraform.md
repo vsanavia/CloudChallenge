@@ -1,4 +1,4 @@
-p align="center">
+<p align="center">
   <img
     width="400"
     src="https://raw.githubusercontent.com/vsanavia/CloudChallenge/main/media/diagram-tf.png"
