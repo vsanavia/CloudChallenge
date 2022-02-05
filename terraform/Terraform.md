@@ -1,6 +1,6 @@
 <p align="center">
   <img
-    width="400"
+    width="600"
     src="https://raw.githubusercontent.com/vsanavia/CloudChallenge/main/media/diagram-tf.png"
     />
 </p>
