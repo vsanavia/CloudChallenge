@@ -17,7 +17,7 @@ jobs:
     name: Build Container
 
     # Only build the container if the source code passed the build and test workflow successfully
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    #if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     runs-on: ubuntu-latest
 
