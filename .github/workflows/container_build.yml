@@ -8,14 +8,9 @@
 name: Container Build
 
 on:
-  # Trigger off of the completion of the "Build and Test" workflow execution
-  workflow_run:
-    workflows:
-      - Build and Test
-    branches:
-      - main
-    types:
-      - completed
+  # push:
+  workflow_dispatch:
+    
 
 jobs:
   build:
