@@ -2,6 +2,7 @@
 ```mermaid
 graph TD;
     A[New version detected]-->B[Build container with new assets];
+    A[New version detected]-->F[Upload resume to S3 bucket];
     B[Build container with new assets]-->D{Test container build};
     D{Test container build}-->|Not OK|C[Alert Mantainer of build error];
     D{Test container build}-->|OK|E[Push to GCP Artifact Registry];
