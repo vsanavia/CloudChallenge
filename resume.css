@@ -17,8 +17,8 @@
 .msg a:hover { background: #266400; }
 
 /* //-- yui-grids style overrides -- */
-body { font-family: Inconsolata; color: #444; }
-#inner { padding: 10px 80px; margin: 80px auto; background: #979dc4; border: solid #666; border-width: 8px 0 2px 0; }
+body { font-family: Inconsolata; color: rgb(21, 0, 78); }
+#inner { padding: 10px 80px; margin: 80px auto; background: #abb0d3; border: solid #666; border-width: 8px 0 2px 0; }
 .yui-gf { margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #ccc; }
 
 /* //-- header, body, footer -- */
@@ -34,14 +34,14 @@ body { font-family: Inconsolata; color: #444; }
 #hd h1 { font-size: 48px; text-transform: uppercase; letter-spacing: 3px; }
 h2 { font-size: 152% }
 h3, h4 { font-size: 122%; }
-h1, h2, h3, h4 { color: #333; }
+h1, h2, h3, h4 { color: rgb(21, 0, 78); }
 p { font-size: 100%; line-height: 18px; padding-right: 3em; }
-a { color: #990003 }
+a { color: rgb(21, 0, 78) }
 a:hover { text-decoration: none; }
 strong { font-weight: bold; }
 li { line-height: 24px; border-bottom: 1px solid #ccc; }
 p.enlarge { font-size: 144%; padding-right: 6.5em; line-height: 24px; }
-p.enlarge span { color: #000 }
+p.enlarge span { color: rgb(21, 0, 78) }
 .contact-info { margin-top: 7px; }
 .first h2 { font-style: italic; }
 .last { border-bottom: 0 }
