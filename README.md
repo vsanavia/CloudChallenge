@@ -11,4 +11,4 @@ This is a project to automate a webserver deployment for the cloud resume challe
 - Enable https access using GCP Cloud CDN.
 - Create entry on Route53 for resume.sanavia.xyz.
 
-All of these tasks are executed using terraform, to highlight multicloud capabilities (TODO). 
+All of these tasks are executed using terraform, to highlight multicloud capabilities ~~(TODO)~~. 
