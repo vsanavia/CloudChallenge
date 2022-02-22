@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  push:
+    branches: main
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          token_format: 'access_token'
+          workload_identity_provider: 'projects/165080585157/locations/global/workloadIdentityPools/gha-pool/providers/gha-provider'
+          service_account: 'gha-1000@cloud-resume-2021-335819.iam.gserviceaccount.com'
+      
+      - name: Login to GAR
+        uses: docker/login-action@v1
+        with:
+          registry: us-central1-docker.pkg.dev
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
