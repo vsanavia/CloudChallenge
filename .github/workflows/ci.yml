@@ -2,11 +2,18 @@ name: ci
 
 on:
   push:
-    branches: main
+   branches: main
 
 jobs:
   login:
     runs-on: ubuntu-latest
+
+    # Add "id-token" with the intended permissions.
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+      
+   
     steps:
       - name: Checkout
         uses: actions/checkout@v2
