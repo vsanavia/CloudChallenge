@@ -41,7 +41,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: us-central1-docker.pkg.dev/cloud-resume-2021-335819/cloud-resume/static-light
-          tags: type=schedule,pattern={{date 'YYYYMMDD'}}
+          #tags: type=schedule,pattern={{date 'YYYYMMDD'}}
 
 
       - name: Docker Build and Push
