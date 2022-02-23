@@ -42,11 +42,8 @@ jobs:
         with:
           images: us-central1-docker.pkg.dev/cloud-resume-2021-335819/cloud-resume/static-light
           tags: |
-# minimal
             type=schedule
-# default
             type=schedule,pattern=nightly
-# handlebars
             type=schedule,pattern={{date 'YYYYMMDD'}}
 
 
