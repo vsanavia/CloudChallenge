@@ -11,9 +11,9 @@ on:
    #paths:
    #  - '**.pdf'
    workflow_dispatch:
-   
+
 env:
-  BUCKET_NAME : "arn:aws:s3:::cv.sanavia.xyz"
+  BUCKET_NAME : "aws:s3:::cv.sanavia.xyz"
   AWS_REGION : "us-east-1"
 # permission can be added at job level or workflow level    
 permissions:
