@@ -1,0 +1,34 @@
+# Sample workflow to access AWS resources when workflow is tied to branch
+# The workflow Creates static website using aws s3
+name: Upload to S3
+on:
+  push:
+   branches: 
+    - 'main'
+   tags:
+    - 'v*' 
+   paths:
+     - '**.pdf'
+env:
+  BUCKET_NAME : "arn:aws:s3:::cv.sanavia.xyz"
+  AWS_REGION : "us-east-1"
+# permission can be added at job level or workflow level    
+permissions:
+      id-token: write
+      contents: read    # This is required for actions/checkout@v2
+jobs:
+  S3PackageUpload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v2
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::604351499918:role/gha_oidc_s3_upload
+          role-session-name: samplerolesession
+          aws-region: ${{ env.AWS_REGION }}
+      # Upload a file to AWS s3
+      - name:  Copy vsanavia_resume.pdf to s3
+        run: |
+          aws s3 cp ./vsanavia_resume.pdf s3://${{ env.BUCKET_NAME }}/
