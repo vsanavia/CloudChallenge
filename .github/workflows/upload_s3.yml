@@ -4,13 +4,13 @@ name: Upload to S3
 
 on:
   push:
-   #branches: 
-   # - 'main'
-   #tags:
-   # - 'v*' 
-   #paths:
-   #  - '**.pdf'
-   workflow_dispatch:
+   branches: 
+    - 'main'
+   tags:
+    - 'v*' 
+   paths:
+     - '**.pdf'
+   #workflow_dispatch:
 
 env:
   BUCKET_NAME : "cv.sanavia.xyz"
