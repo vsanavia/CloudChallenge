@@ -5,12 +5,15 @@
   pull_request:
 
   jobs:
-  terraform:
+   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
     steps:
   
-  steps:
+  - name: Checkout
+  uses: actions/checkout@v2
+
+  name: Setup Terraform
 - uses: hashicorp/setup-terraform@v1
   
   name: Terraform Format
