@@ -39,9 +39,9 @@ resource "aws_route53_record" "cv2" {
   name    = "cv2.sanavia.xyz"
   ttl     = "300"
   type    = "CNAME"
-  records = [aws_s3_bucket_versioning.s3_bucket_resume.bucket_domain_name]
+  records = [aws_s3_bucket.s3_bucket_resume.bucket_domain_name]
   depends_on = [
-    aws_s3_bucket_versioning.s3_bucket_resume,
+    aws_s3_bucket.s3_bucket_resume,
   ]
 }
 #Section that manages google bucket to maintain external tf state
@@ -75,17 +75,19 @@ data "aws_iam_policy_document" "s3_policy_document" {
 }
 #Section that manages creation of resume bucket
 #policy is read from a data clause in order to make code more legible
-resource "aws_s3_bucket_versioning" "s3_bucket_resume" {
+resource "aws_s3_bucket" "s3_bucket_resume" {
   bucket = "s3-bucket-resume-17jan2022"
   acl    = "public-read"
   policy = data.aws_iam_policy_document.s3_policy_document.json
-
-  versioning_configuration {
-    enabled = true
-
-  }
-
   tags = {
     Name = "Terraform Bucket"
   }
 }
+resource "aws_s3_bucket_versioning" "versioning_section"{
+  bucket = aws_s3_bucket.s3_bucket_resume.id
+  versioning_configuration {
+    status = "Enabled"
+}
+}
+
+  
