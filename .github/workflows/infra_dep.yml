@@ -37,9 +37,9 @@ jobs:
               AWS_CONFIG: ${{ secrets.TF_CONFIG_AWS }}
               AWS_CRED: ${{ secrets.TF_CREDS_AWS }}
             run: |
-              echo $GCP_CRED > GCP_OUTPUT_PATH/credentials.json
-              echo $AWS_CONFIG > AWS_OUTPUT_PATH/config
-              echo $AWS_CRED > AWS_OUTPUT_PATH/credentials
+              echo $GCP_CRED > $GCP_OUTPUT_PATH/credentials.json
+              echo $AWS_CONFIG > $AWS_OUTPUT_PATH/config
+              echo $AWS_CRED > $AWS_OUTPUT_PATH/credentials
         
           - name: Terraform Format
             id: fmt
