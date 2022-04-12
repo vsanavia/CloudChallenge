@@ -8,14 +8,14 @@
 #}
 provider "aws" {
   region = var.aws_region
-  profile = ${{ secrets.TF_CREDS_AWS }}
+  #profile = ${{ secrets.TF_CREDS_AWS }}
 }
 provider "google" {
-  credentials = ${{ secrets.TF_CREDS_GCP }}
+  #credentials = ${{ secrets.TF_CREDS_GCP }}
   project = var.gcp_project_id
 }
 provider "google-beta" {
-  credentials = ${{ secrets.TF_CREDS_GCP }}
+  #credentials = ${{ secrets.TF_CREDS_GCP }}
   project     = var.gcp_project_id
 }
 #Section that manages dns entries for bucket (pdf resume) and html site
@@ -47,7 +47,7 @@ backend  = "gcs"
 config = {  
     bucket = "tf-state-crc-17jan2022"
     prefix = "terraform/state"
-    credentials = ${{ secrets.TF_CREDS_GCP }}
+    #credentials = ${{ secrets.TF_CREDS_GCP }}
   }
 }
 #Section that manages access policy for resume bucket

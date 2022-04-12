@@ -11,6 +11,8 @@ jobs:
         name: 'Terraform'
         runs-on: ubuntu-latest
 
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.TF_CREDS_GCP }}
         defaults:
           run:
             working-directory: ./terraform
