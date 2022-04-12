@@ -1,15 +1,17 @@
-#terraform {
-#  required_providers {
-#    aws = {
-#      source = "hashicorp/aws"
-#      version = "~> 4.9.0"
-#    }
-#  }
-#}
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~> 4.9.0"
+    }
+  }
+}
+
+#Provider section modified to run on GHA runner
 provider "aws" {
   region = var.aws_region
-  shared_config_file      = "/home/runner/work/_temp/config"
-  shared_credentials_file = "/home/runner/work/_temp/credentials"
+  shared_config_files      = ["/home/runner/work/_temp/config"]
+  shared_credentials_files = ["/home/runner/work/_temp/credentials"]
   profile = "tf_user"
 }
 provider "google" {
