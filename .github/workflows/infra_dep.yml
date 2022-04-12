@@ -20,14 +20,17 @@ jobs:
 
         steps:
   
+          #Changed code to use latest version of checkout action
           - name: Checkout
             uses: actions/checkout@v3
 
+          #Setup directories on runner for GCP & AWS credentials
           - name: Directory Variable Setup
             run: |
               GCP_OUTPUT_PATH=$RUNNER_TEMP/GCP
               AWS_OUTPUT_PATH=$RUNNER_TEMP/AWS
 
+          #Extract secrets to be used in TF from GH secrets
           - name: Credentials Setup
             env:
               GCP_CRED: ${{ secrets.TF_CREDS_GCP }}
