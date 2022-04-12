@@ -1,11 +1,13 @@
-- on:
+name: Infrastructure deployment
+
+on:
   push:
     branches:
       - tf-automation
   pull_request:
 
-    jobs:
-      terraform:
+jobs:
+    terraform:
         name: 'Terraform'
         runs-on: ubuntu-latest
         steps:
