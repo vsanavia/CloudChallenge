@@ -16,25 +16,25 @@ provider "google" {
 }
 provider "google-beta" {
   #credentials = ${{ secrets.TF_CREDS_GCP }}
-  project     = var.gcp_project_id
+  project = var.gcp_project_id
 }
 #Section that manages dns entries for bucket (pdf resume) and html site
-resource "aws_route53_record" "web-resume2"{
+resource "aws_route53_record" "web-resume2" {
   zone_id = var.dns_zone
-  name = "web-resume2.sanavia.xyz"
-  ttl = "300"
-  type = "A"
+  name    = "web-resume2.sanavia.xyz"
+  ttl     = "300"
+  type    = "A"
   records = [module.lb-http.external_ip]
   depends_on = [
     module.lb-http,
   ]
 }
 #Section that manages dns entries for bucket (pdf resume) and html site
-resource "aws_route53_record" "cv2"{
+resource "aws_route53_record" "cv2" {
   zone_id = var.dns_zone
-  name = "cv2.sanavia.xyz"
-  ttl = "300"
-  type = "CNAME"
+  name    = "cv2.sanavia.xyz"
+  ttl     = "300"
+  type    = "CNAME"
   records = [aws_s3_bucket.s3_bucket_resume.bucket_domain_name]
   depends_on = [
     aws_s3_bucket.s3_bucket_resume,
@@ -43,8 +43,8 @@ resource "aws_route53_record" "cv2"{
 #Section that manages google bucket to maintain external tf state
 #gcp bucket was chosen as it natively supports state locking
 data "terraform_remote_state" "cloudrescha_jan2022" {
-backend  = "gcs" 
-config = {  
+  backend = "gcs"
+  config = {
     bucket = "tf-state-crc-17jan2022"
     prefix = "terraform/state"
     #credentials = ${{ secrets.TF_CREDS_GCP }}
@@ -60,7 +60,7 @@ data "aws_iam_policy_document" "s3_policy_document" {
       "s3:GetObject",
     ]
     principals {
-      type = "*"
+      type        = "*"
       identifiers = ["*"]
     }
 
@@ -74,11 +74,11 @@ data "aws_iam_policy_document" "s3_policy_document" {
 resource "aws_s3_bucket" "s3_bucket_resume" {
   bucket = "s3-bucket-resume-17jan2022"
   acl    = "public-read"
-  policy = data.aws_iam_policy_document.s3_policy_document.json 
+  policy = data.aws_iam_policy_document.s3_policy_document.json
 
-  versioning{
+  versioning {
     enabled = true
-  
+
   }
 
   tags = {

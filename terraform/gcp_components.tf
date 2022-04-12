@@ -39,7 +39,7 @@ resource "google_compute_region_network_endpoint_group" "serverless_neg" {
   name                  = "serverless-neg"
   network_endpoint_type = "SERVERLESS"
   region                = var.gcp_region
-  project  = var.gcp_project_id
+  project               = var.gcp_project_id
   cloud_run {
     service = google_cloud_run_service.default.name
   }
