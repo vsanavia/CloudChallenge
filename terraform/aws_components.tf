@@ -77,11 +77,19 @@ data "aws_iam_policy_document" "s3_policy_document" {
 #policy is read from a data clause in order to make code more legible
 resource "aws_s3_bucket" "s3_bucket_resume" {
   bucket = "s3-bucket-resume-17jan2022"
-  acl    = "public-read"
-  policy = data.aws_iam_policy_document.s3_policy_document.json
+  
+  
   tags = {
     Name = "Terraform Bucket"
   }
+}
+resource "aws_s3_bucket_acl" "acl_section" {
+  bucket = aws_s3_bucket.s3_bucket_resume.id
+  acl    = "public-read"
+}
+resource "aws_s3_bucket_policy" "policy_section" {
+  bucket = aws_s3_bucket.s3_bucket_resume.id
+  policy = data.aws_iam_policy_document.s3_policy_document.json
 }
 resource "aws_s3_bucket_versioning" "versioning_section"{
   bucket = aws_s3_bucket.s3_bucket_resume.id
@@ -89,5 +97,3 @@ resource "aws_s3_bucket_versioning" "versioning_section"{
     status = "Enabled"
 }
 }
-
-  
