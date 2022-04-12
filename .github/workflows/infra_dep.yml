@@ -13,6 +13,7 @@ jobs:
 
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.TF_CREDS_GCP }}
+          
         defaults:
           run:
             working-directory: ./terraform
@@ -24,6 +25,17 @@ jobs:
 
           - name: Setup Terraform
             uses: hashicorp/setup-terraform@v1
+
+          - name: Directory Variable Setup
+            run: |
+              GCP_OUTPUT_PATH=$RUNNER_TEMP/GCP
+              AWS_OUTPUT_PATH=$RUNNER_TEMP/AWS
+
+          - name: Variable Setup
+            run: |
+              echo ${{ secrets.TF_CREDS_GCP }} > GCP_OUTPUT_PATH/credentials.json
+              echo ${{ secrets.TF_CONFIG_AWS }} > AWS_OUTPUT_PATH/config
+              echo ${{ secrets.TF_CREDS_AWS }} > AWS_OUTPUT_PATH/credentials
         
           - name: Terraform Format
             id: fmt

@@ -7,15 +7,16 @@
 #  }
 #}
 provider "aws" {
-  region = var.aws_region
-  #profile = ${{ secrets.TF_CREDS_AWS }}
+  shared_config_files      = ["/home/runner/work/_temp/AWS/config"]
+  shared_credentials_files = ["/home/runner/work/_temp/AWS/credentials"]
+  profile = "tf_user"
 }
 provider "google" {
-  #credentials = ${{ secrets.TF_CREDS_GCP }}
+  credentials = "/home/runner/work/_temp/GCP/credentials.json"
   project = var.gcp_project_id
 }
 provider "google-beta" {
-  #credentials = ${{ secrets.TF_CREDS_GCP }}
+  credentials = "/home/runner/work/_temp/GCP/credentials.json"
   project = var.gcp_project_id
 }
 #Section that manages dns entries for bucket (pdf resume) and html site
