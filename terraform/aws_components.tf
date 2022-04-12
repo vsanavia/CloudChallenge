@@ -51,7 +51,7 @@ data "terraform_remote_state" "cloudrescha_jan2022" {
   config = {
     bucket = "tf-state-crc-17jan2022"
     prefix = "terraform/state"
-    #credentials = ${{ secrets.TF_CREDS_GCP }}
+    credentials = "/home/runner/work/_temp/credentials.json"
   }
 }
 #Section that manages access policy for resume bucket
