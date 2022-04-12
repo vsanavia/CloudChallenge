@@ -11,8 +11,8 @@ jobs:
         name: 'Terraform'
         runs-on: ubuntu-latest
 
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.TF_CREDS_GCP }}
+        #env:
+          #GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.TF_CREDS_GCP }}
           
         defaults:
           run:
@@ -31,11 +31,15 @@ jobs:
               GCP_OUTPUT_PATH=$RUNNER_TEMP/GCP
               AWS_OUTPUT_PATH=$RUNNER_TEMP/AWS
 
-          - name: Variable Setup
+          - name: Credentials Setup
+            env:
+              GCP_CRED: ${{ secrets.TF_CREDS_GCP }}
+              AWS_CONFIG: ${{ secrets.TF_CONFIG_AWS }}
+              AWS_CRED: ${{ secrets.TF_CREDS_AWS }}
             run: |
-              echo ${{ secrets.TF_CREDS_GCP }} > GCP_OUTPUT_PATH/credentials.json
-              echo ${{ secrets.TF_CONFIG_AWS }} > AWS_OUTPUT_PATH/config
-              echo ${{ secrets.TF_CREDS_AWS }} > AWS_OUTPUT_PATH/credentials
+              echo $GCP_CRED > GCP_OUTPUT_PATH/credentials.json
+              echo $AWS_CONFIG > AWS_OUTPUT_PATH/config
+              echo $AWS_CRED > AWS_OUTPUT_PATH/credentials
         
           - name: Terraform Format
             id: fmt
