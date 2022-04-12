@@ -2,13 +2,14 @@
 #  required_providers {
 #    aws = {
 #      source = "hashicorp/aws"
-#      version = "~> 3.70.0"
+#      version = "~> 4.9.0"
 #    }
 #  }
 #}
 provider "aws" {
-  shared_config_files      = "/home/runner/work/_temp/config"
-  shared_credentials_files = "/home/runner/work/_temp/credentials"
+  region = var.aws_region
+  shared_config_file      = "/home/runner/work/_temp/config"
+  shared_credentials_file = "/home/runner/work/_temp/credentials"
   profile = "tf_user"
 }
 provider "google" {
