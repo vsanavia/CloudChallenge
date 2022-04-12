@@ -37,6 +37,7 @@ jobs:
               AWS_CONFIG: ${{ secrets.TF_CONFIG_AWS }}
               AWS_CRED: ${{ secrets.TF_CREDS_AWS }}
             run: |
+              ls -lha $RUNNER_TEMP
               ls -lha $GCP_OUTPUT_PATH
               echo $GCP_CRED > $GCP_OUTPUT_PATH/credentials.json
               echo $AWS_CONFIG > $AWS_OUTPUT_PATH/config
