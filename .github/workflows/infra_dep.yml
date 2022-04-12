@@ -14,9 +14,9 @@ jobs:
         #env:
           #GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.TF_CREDS_GCP }}
           
-        #defaults:
-          #run:
-            #working-directory: ./terraform
+        defaults:
+          run:
+            working-directory: ./terraform
 
         steps:
   
@@ -42,9 +42,7 @@ jobs:
               echo $AWS_CRED > $RUNNER_TEMP/credentials
         
           - name: Setup Terraform
-            run: |
-              working-directory: ./terraform
-              uses: hashicorp/setup-terraform@v1
+            uses: hashicorp/setup-terraform@v1
 
           - name: Terraform Format
             id: fmt
