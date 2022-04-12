@@ -7,8 +7,8 @@
 #  }
 #}
 provider "aws" {
-  shared_config_files      = ["/home/runner/work/_temp/config"]
-  shared_credentials_files = ["/home/runner/work/_temp/credentials"]
+  shared_config_files      = "/home/runner/work/_temp/config"
+  shared_credentials_files = "/home/runner/work/_temp/credentials"
   profile = "tf_user"
 }
 provider "google" {
