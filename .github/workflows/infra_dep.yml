@@ -37,9 +37,9 @@ jobs:
               AWS_CONFIG: ${{ secrets.TF_CONFIG_AWS }}
               AWS_CRED: ${{ secrets.TF_CREDS_AWS }}
             run: |
-              sudo echo $GCP_CRED > $GCP_OUTPUT_PATH/credentials.json
-              sudo echo $AWS_CONFIG > $AWS_OUTPUT_PATH/config
-              sudo echo $AWS_CRED > $AWS_OUTPUT_PATH/credentials
+              echo $GCP_CRED > $RUNNER_TEMP/credentials.json
+              echo $AWS_CONFIG > $RUNNER_TEMP/config
+              echo $AWS_CRED > $RUNNER_TEMP/credentials
         
           - name: Setup Terraform
             run: |
