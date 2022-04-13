@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "~> 4.9.0"
     }
   }
@@ -9,18 +9,18 @@ terraform {
 
 #Provider section modified to run on GHA runner
 provider "aws" {
-  region = var.aws_region
+  region                   = var.aws_region
   shared_config_files      = ["/home/runner/work/_temp/config"]
   shared_credentials_files = ["/home/runner/work/_temp/credentials"]
-  profile = "tf_user"
+  profile                  = "tf_user"
 }
 provider "google" {
   credentials = "/home/runner/work/_temp/credentials.json"
-  project = var.gcp_project_id
+  project     = var.gcp_project_id
 }
 provider "google-beta" {
   credentials = "/home/runner/work/_temp/credentials.json"
-  project = var.gcp_project_id
+  project     = var.gcp_project_id
 }
 #Section that manages dns entries for bucket (pdf resume) and html site
 resource "aws_route53_record" "web-resume2" {
@@ -49,8 +49,8 @@ resource "aws_route53_record" "cv2" {
 data "terraform_remote_state" "cloudrescha_jan2022" {
   backend = "gcs"
   config = {
-    bucket = "tf-state-crc-17jan2022"
-    prefix = "terraform/state"
+    bucket      = "tf-state-crc-17jan2022"
+    prefix      = "terraform/state"
     credentials = "/home/runner/work/_temp/credentials.json"
   }
 }
@@ -77,8 +77,8 @@ data "aws_iam_policy_document" "s3_policy_document" {
 #policy is read from a data clause in order to make code more legible
 resource "aws_s3_bucket" "s3_bucket_resume" {
   bucket = "s3-bucket-resume-17jan2022"
-  
-  
+
+
   tags = {
     Name = "Terraform Bucket"
   }
@@ -91,9 +91,9 @@ resource "aws_s3_bucket_policy" "policy_section" {
   bucket = aws_s3_bucket.s3_bucket_resume.id
   policy = data.aws_iam_policy_document.s3_policy_document.json
 }
-resource "aws_s3_bucket_versioning" "versioning_section"{
+resource "aws_s3_bucket_versioning" "versioning_section" {
   bucket = aws_s3_bucket.s3_bucket_resume.id
   versioning_configuration {
     status = "Enabled"
-}
+  }
 }

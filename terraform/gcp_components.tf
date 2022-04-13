@@ -1,6 +1,6 @@
 module "lb-http" {
   source  = "GoogleCloudPlatform/lb-http/google//modules/serverless_negs"
-  version = "~> 5.1"
+  version = "~> 6.2"
   name    = "tf-cr-lb"
   project = var.gcp_project_id
 
