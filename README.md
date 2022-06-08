@@ -1,3 +1,10 @@
+![GitHub](https://img.shields.io/github/license/vsanavia/CloudChallenge)
+![GitHub last commit](https://img.shields.io/github/last-commit/vsanavia/CloudChallenge)
+![GitHub followers](https://img.shields.io/github/followers/vsanavia?style=social)
+[![Medium vsanavia](https://img.shields.io/badge/medium.com%2F@vsanavia-subscribe-blueviolet)](https://medium.com/@vsanavia)
+![Twitter Follow](https://img.shields.io/twitter/follow/vsanavia?style=social)
+# Cloud Resume Challenge Implementation
+
 <p align="center">
   <img
     width="600"
